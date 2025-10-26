@@ -1,28 +1,25 @@
-import { useState } from 'react'
+import React, { useEffect } from 'react';
+import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import Sections from './components/Sections';
+import ContactFooter from './components/ContactFooter';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  useEffect(() => {
+    // Ensure dark mode default for a sleek, modern look
+    if (!document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 selection:bg-blue-500/30 selection:text-blue-100 scroll-smooth">
+      <Navigation />
+      <main>
+        <Hero />
+        <Sections />
+        <ContactFooter />
+      </main>
     </div>
-  )
+  );
 }
-
-export default App
